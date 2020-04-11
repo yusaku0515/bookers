@@ -1,32 +1,27 @@
 class BooksController < ApplicationController
 
-  def top
-  end
-
   def index
-  	@book = Book.all
+    @books = Book.all
+    @book = Book.new #新規に作成したレコードなのでcreateアクションが動く
   end
 
   def show
-  	@book = Book.all
-  end
-
-  def new
+    @book = Book.find(params[:id])
   end
 
   def create
-  	book = Book.new(book_params)
-  	book.save
-  	redirect_to show_path(book.id)
+    book = Book.new(book_params)
+    book.save
+    redirect_to book_path(book.id)
   end
 
   def destroy
-  	book = Book.find(params[:id])
-  	book.destroy
-  	redirect_to books_path
+    book = Book.find(params[:id]) #データ（レコード）を１件取得
+    book.destroy #データを削除
+    redirect_to books_path #Book一覧画面へリダイレクト
   end
 
-  def edit
+  def edit #既存のレコードを取得しているのでupdateアクションが動く
   	@book = Book.find(params[:id])
   end
 

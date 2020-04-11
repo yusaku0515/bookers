@@ -1,27 +1,44 @@
 <h1>Books</h1>
 
+<table> <!-- <tr>,<th>,<td>などと組み合わせて表を作成するためのタグ。 -->
+ <thead> <!-- head -->
+  <tr> <!-- teble rowの略。行全体を挟む。 -->
+   <th>Title</th> <!-- teble headerの略。見出しセル。 -->
+   <th>Body</th>
+  </tr>
+ </thead>
 
- <h4>Title</h4>
- <%= @book.title %>
-
- <h4>Body</h4>
- <%= @book.body %>
-
-
-
+ <tbody> <!-- body -->
+ <tr>
+  <% @books.each do |f| %>
+   <tb> <!-- table dataの略。trの中で使う。挟まれた部分が表の中身のセルになる。 -->
+   <span><%= f.title %></span>
+   </tb>
+  <% end %>
+  <% @books.each do |f| %>
+   <tb>
+   <span><%= f.body %></span>
+   </tb>
+  <% end %>
+  </tr>
+ </tbody>
+</table>
 
 
  <!-- 投稿 -->
  <h2>New book</h2>
 
- <%= form_for(@book) do |f| %>
+<%= form_for(@book) do |f| %>
 
   <h4>Title</h4>
+  <!-- 一行のデキスト投稿フォーム -->
    <%= f.text_field :title %>
 
   <h4>Body</h4>
+  <!-- 複数行のテキスト投稿フォーム -->
    <%= f.text_area :body %>
 
+  <!-- 送信ボタンの生成 -->
   <%= f.submit 'Create Book' %>
-  
+
  <% end %>

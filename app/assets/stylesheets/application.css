@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+
+
+table tb {
+  display: list-item;
+  list-style-type: none;
+  text-transform: uppercase;
+  color: blue;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+}
+
